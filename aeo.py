@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-import openai
+from openai import OpenAI
 import json
 import plotly.express as px
 import requests
@@ -1388,11 +1388,11 @@ def Recommendations(Recommendation_output):
 # Use markdown + HTML for colored title - Added
 st.set_page_config(page_title="EXL Brand Visibility", layout="wide")
 st.markdown("""<style>.stApp{background:#FAF7F3;}</style> """,unsafe_allow_html=True)
-
-openai.api_key = st.secrets["api_keys"]["Openai_API_KEY"]
+client = st.secrets["api_keys"]["Openai_API_KEY"]
+#openai.api_key = st.secrets["api_keys"]["Openai_API_KEY"]
 # Function to run prompts and collect responses
 def run_prompts(prompts, model="gpt-4-turbo", temperature=0.7):
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": "You are a helpful assistant that outputs only valid JSON."},
