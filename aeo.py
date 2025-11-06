@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-from openai import OpenAI
+import openai
 import json
 import plotly.express as px
 import requests
