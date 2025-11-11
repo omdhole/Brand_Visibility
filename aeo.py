@@ -19,7 +19,7 @@ import matplotlib.colors as mcolors
 import textwrap
 import tiktoken
 
-Mode='dynamic' #options : 'static', 'dynamic'
+Mode='static' #options : 'static', 'dynamic'
 
 # Page 1: Search
 def page_search():
@@ -1388,8 +1388,37 @@ def Recommendations(Recommendation_output):
 # Use markdown + HTML for colored title - Added
 st.set_page_config(page_title="EXL Brand Visibility", layout="wide")
 st.markdown("""<style>.stApp{background:#FAF7F3;}</style> """,unsafe_allow_html=True)
-client = st.secrets["api_keys"]["Openai_API_KEY"]
+
+# Initialize OpenAI client
+client = OpenAI(api_key=st.secrets["api_keys"]["Openai_API_KEY"])
 #openai.api_key = st.secrets["api_keys"]["Openai_API_KEY"]
+# Function to run prompts and collect responses
+# def run_prompts(prompts, model="gpt-4-turbo", temperature=0.7):
+#     response = client.chat.completions.create(
+#         model=model,
+#         messages=[
+#             {"role": "system", "content": "You are a helpful assistant that outputs only valid JSON."},
+#             {"role": "user", "content": f"{prompts}\n\nRespond only in JSON format."}
+#         ],
+#         temperature=temperature
+#     )
+    
+#     output = response['choices'][0]['message']['content'].strip()
+
+#     try:
+#         output=json.loads(output)
+#         #st.write(output)
+#         # Token usage data
+#         token_data = {
+#             "input_tokens": response.usage.prompt_tokens,
+#             "output_tokens": response.usage.completion_tokens,
+#             "total_tokens": response.usage.total_tokens
+#         }
+
+#         return output,token_data
+#     except json.JSONDecodeError:
+#         st.error(f"Model did not return valid JSON:\n{output}")
+#         return None
 # Function to run prompts and collect responses
 def run_prompts(prompts, model="gpt-4-turbo", temperature=0.7):
     response = client.chat.completions.create(
@@ -1400,24 +1429,20 @@ def run_prompts(prompts, model="gpt-4-turbo", temperature=0.7):
         ],
         temperature=temperature
     )
-    
-    output = response['choices'][0]['message']['content'].strip()
+
+    output = response.choices[0].message.content.strip()
 
     try:
-        output=json.loads(output)
-        #st.write(output)
-        # Token usage data
+        output = json.loads(output)
         token_data = {
             "input_tokens": response.usage.prompt_tokens,
             "output_tokens": response.usage.completion_tokens,
             "total_tokens": response.usage.total_tokens
         }
-
-        return output,token_data
+        return output, token_data
     except json.JSONDecodeError:
         st.error(f"Model did not return valid JSON:\n{output}")
-        return None
-
+        return None, None
 # Session state
 if 'page' not in st.session_state:
     st.session_state.page = 1
