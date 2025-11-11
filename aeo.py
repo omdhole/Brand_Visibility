@@ -19,7 +19,7 @@ import matplotlib.colors as mcolors
 import textwrap
 import tiktoken
 
-Mode='dynamic' #options : 'static', 'dynamic'
+Mode='static' #options : 'static', 'dynamic'
 
 # Page 1: Search
 def page_search():
@@ -2319,65 +2319,67 @@ elif st.session_state.page == 7:
             "AI-Optimized Version": {{"content": "..."}},
             "Brand Voice Version": {{"content": "..."}}
             }}"""
-            Recommendation_output={
-            "FAQ": [
-                {
-                "question": "What are the key features to look for in a broadband and TV package for families?",
-                "answer": "Look for high-speed internet, a generous data cap, family-friendly TV channels, parental controls, and reliable customer support."
+            if Mode=='static':
+                Recommendation_output={
+                "FAQ": [
+                    {
+                    "question": "What are the key features to look for in a broadband and TV package for families?",
+                    "answer": "Look for high-speed internet, a generous data cap, family-friendly TV channels, parental controls, and reliable customer support."
+                    },
+                    {
+                    "question": "How can I ensure the broadband speed is sufficient for my family?",
+                    "answer": "Consider the number of devices used simultaneously and opt for a package offering speeds of at least 25 Mbps to support streaming, gaming, and browsing."
+                    },
+                    {
+                    "question": "Are there any cost-effective broadband and TV packages ideal for families?",
+                    "answer": "Yes, many providers offer bundles that include both services at a discounted rate. Compare multiple providers to find the best deals."
+                    },
+                    {
+                    "question": "What parental control features should I look for in these packages?",
+                    "answer": "Seek packages that offer comprehensive parental controls for both TV and internet, allowing you to manage access and set viewing limits."
+                    }
+                ],
+                "Knowledge Article": {
+                    "content": "Selecting the right broadband and TV package for families is crucial, as it impacts both entertainment and connectivity. Families should look for packages that offer a blend of high-speed internet and a variety of TV channels catering to all age groups. High-speed internet is essential for supporting multiple devices and activities such as online schooling, work from home setups, and streaming services. Additionally, consider packages with flexible upgrade options to easily adapt to changing needs. When it comes to TV, a good family package will include channels for children, educational content, and entertainment that appeals to adults as well. Bundling these services can often lead to cost savings and simplified customer service experiences."
                 },
-                {
-                "question": "How can I ensure the broadband speed is sufficient for my family?",
-                "answer": "Consider the number of devices used simultaneously and opt for a package offering speeds of at least 25 Mbps to support streaming, gaming, and browsing."
+                "Social Posts": [
+                    "Looking for a family-friendly broadband & TV bundle? Look no further! Our packages offer high-speed internet & channels everyone will love. #FamilyEntertainment #BroadbandDeals",
+                    "Upgrade your family time with our top-rated broadband and TV packages! Fast speeds, great channels, and happy moments await! #StayConnected #FamilyFun",
+                    "Stream, browse, and enjoy together! Our family packages are designed to keep everyone connected and entertained. Check them out now! #BroadbandForFamilies #FamilyTV"
+                ],
+                "How-To Guide": [
+                    {
+                    "step": "Determine your family's internet and TV usage needs, considering both the number of users and types of activities.",
+                    "tip": "Make a list of all devices that will connect to your network to estimate needed speed."
+                    },
+                    {
+                    "step": "Research and compare different broadband and TV packages available in your area.",
+                    "tip": "Use comparison websites to find the best deals and read customer reviews for reliability insights."
+                    },
+                    {
+                    "step": "Check for bundles offered by service providers that might include both internet and TV services at a discounted rate."
+                    },
+                    {
+                    "step": "Consider the parental controls available with the packages to ensure safe viewing and browsing for your children."
+                    },
+                    {
+                    "step": "Contact the service providers to discuss contract terms and installation processes before finalizing the deal."
+                    }
+                ],
+                "AI-Optimized Version": {
+                    "content": "For families, selecting an appropriate broadband and TV package is pivotal for ensuring sufficient entertainment and connectivity options. Ideal packages offer high-speed internet capable of handling multiple simultaneous connections and a diverse array of TV channels suitable for all family members. Bundles often provide cost efficiency and the convenience of a single provider. When choosing a package, it is advisable to consider the number of users, the types of digital activities engaged in, and any necessary parental control features to maintain a safe media environment."
                 },
-                {
-                "question": "Are there any cost-effective broadband and TV packages ideal for families?",
-                "answer": "Yes, many providers offer bundles that include both services at a discounted rate. Compare multiple providers to find the best deals."
-                },
-                {
-                "question": "What parental control features should I look for in these packages?",
-                "answer": "Seek packages that offer comprehensive parental controls for both TV and internet, allowing you to manage access and set viewing limits."
+                "Brand Voice Version": {
+                    "content": "Hey there, nostalgic families! Ready to throw it back with some modern convenience? Our broadband and TV packages are like a cozy blanket from the past, with all the warmth of today’s technology. We’ve wrapped up high-speed internet and captivating TV channels into one sweet bundle, just for you. With our deals, your family can connect, stream, and relive all those golden oldies without missing a beat. Dive into our family-friendly packages that are built on value, sprinkled with fun, and designed with love, ensuring every family moment is brilliantly connected."
                 }
-            ],
-            "Knowledge Article": {
-                "content": "Selecting the right broadband and TV package for families is crucial, as it impacts both entertainment and connectivity. Families should look for packages that offer a blend of high-speed internet and a variety of TV channels catering to all age groups. High-speed internet is essential for supporting multiple devices and activities such as online schooling, work from home setups, and streaming services. Additionally, consider packages with flexible upgrade options to easily adapt to changing needs. When it comes to TV, a good family package will include channels for children, educational content, and entertainment that appeals to adults as well. Bundling these services can often lead to cost savings and simplified customer service experiences."
-            },
-            "Social Posts": [
-                "Looking for a family-friendly broadband & TV bundle? Look no further! Our packages offer high-speed internet & channels everyone will love. #FamilyEntertainment #BroadbandDeals",
-                "Upgrade your family time with our top-rated broadband and TV packages! Fast speeds, great channels, and happy moments await! #StayConnected #FamilyFun",
-                "Stream, browse, and enjoy together! Our family packages are designed to keep everyone connected and entertained. Check them out now! #BroadbandForFamilies #FamilyTV"
-            ],
-            "How-To Guide": [
-                {
-                "step": "Determine your family's internet and TV usage needs, considering both the number of users and types of activities.",
-                "tip": "Make a list of all devices that will connect to your network to estimate needed speed."
-                },
-                {
-                "step": "Research and compare different broadband and TV packages available in your area.",
-                "tip": "Use comparison websites to find the best deals and read customer reviews for reliability insights."
-                },
-                {
-                "step": "Check for bundles offered by service providers that might include both internet and TV services at a discounted rate."
-                },
-                {
-                "step": "Consider the parental controls available with the packages to ensure safe viewing and browsing for your children."
-                },
-                {
-                "step": "Contact the service providers to discuss contract terms and installation processes before finalizing the deal."
                 }
-            ],
-            "AI-Optimized Version": {
-                "content": "For families, selecting an appropriate broadband and TV package is pivotal for ensuring sufficient entertainment and connectivity options. Ideal packages offer high-speed internet capable of handling multiple simultaneous connections and a diverse array of TV channels suitable for all family members. Bundles often provide cost efficiency and the convenience of a single provider. When choosing a package, it is advisable to consider the number of users, the types of digital activities engaged in, and any necessary parental control features to maintain a safe media environment."
-            },
-            "Brand Voice Version": {
-                "content": "Hey there, nostalgic families! Ready to throw it back with some modern convenience? Our broadband and TV packages are like a cozy blanket from the past, with all the warmth of today’s technology. We’ve wrapped up high-speed internet and captivating TV channels into one sweet bundle, just for you. With our deals, your family can connect, stream, and relive all those golden oldies without missing a beat. Dive into our family-friendly packages that are built on value, sprinkled with fun, and designed with love, ensuring every family moment is brilliantly connected."
-            }
-            }
-            data = {
-                "input_tokens": 19074,
-                "output_tokens": 42,
-                "total_tokens": 19116
-            }
-            #Recommendation_output,data = run_prompts(Recommendation)
+                data = {
+                    "input_tokens": 19074,
+                    "output_tokens": 42,
+                    "total_tokens": 19116
+                }
+            else:
+                Recommendation_output,data = run_prompts(Recommendation)
             Recommendations(Recommendation_output)
             st.markdown(f"""
                 > **Note:**  
