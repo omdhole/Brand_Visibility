@@ -19,7 +19,7 @@ import matplotlib.colors as mcolors
 import textwrap
 import tiktoken
 
-Mode='static' #options : 'static', 'dynamic'
+Mode='dynamic' #options : 'static', 'dynamic'
 
 # Page 1: Search
 def page_search():
